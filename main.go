@@ -44,7 +44,7 @@ func main() {
 	}
 
 	// Ask user to securely enter private key
-	lockedSeed, err := getSeedInput()
+	lockedSeed, err := getKeyInput()
 	if err != nil {
 		fmt.Println("Unable to read input: ", err)
 		memguard.SafeExit(1)
@@ -61,7 +61,7 @@ func main() {
 	fmt.Printf("Signed Transaction:\n%s", *signedTx)
 }
 
-func getSeedInput() (*memguard.LockedBuffer, error) {
+func getKeyInput() (*memguard.LockedBuffer, error) {
 	fmt.Println()
 	fmt.Println("Enter the secret or private key: ")
 	inputBytes, err := terminal.ReadPassword(int(syscall.Stdin))
