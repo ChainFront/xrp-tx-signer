@@ -58,19 +58,19 @@ func main() {
 	}
 
 	fmt.Println()
-	fmt.Printf("Signed Transaction (Base64 Encoded):\n%s", *signedTx)
+	fmt.Printf("Signed Transaction:\n%s", *signedTx)
 }
 
 func getSeedInput() (*memguard.LockedBuffer, error) {
 	fmt.Println()
-	fmt.Println("Enter the signing seed or private key: ")
-	bytePassword, err := terminal.ReadPassword(int(syscall.Stdin))
+	fmt.Println("Enter the secret or private key: ")
+	inputBytes, err := terminal.ReadPassword(int(syscall.Stdin))
 	if err != nil {
 		return nil, err
 
 	}
-	defer memguard.WipeBytes(bytePassword)
+	defer memguard.WipeBytes(inputBytes)
 
-	lockedSeed, err := memguard.NewImmutableFromBytes(bytePassword)
+	lockedSeed, err := memguard.NewImmutableFromBytes(inputBytes)
 	return lockedSeed, nil
 }

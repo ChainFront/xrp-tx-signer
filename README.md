@@ -10,7 +10,7 @@ This repo contains a simple golang program to sign an transaction for the XRP le
 
 To use this utility to sign a transaction, run the following:
 
-    ./xrp-tx-signer --input unsigned_tx.json
+    ./xrp-tx-signer --input test/testdata/unsigned_payment_tx.json
     
 This will prompt you for the seed necessary to sign the transaction.
 
